@@ -1,16 +1,22 @@
-# This is a sample Python script.
+import discord as dc
 
-# Press Umschalt+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+def getBotToken():
+    return open("E:\Öffentliche Dokumente\BanBot-Verification\keys.txt").read()
+
+intent = dc.Intents.default()
+intent.members = True
+
+TOKEN = getBotToken()
+
+client = dc.Client()
+
+print("Booting..")
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Strg+F8 to toggle the breakpoint.
+@client.event
+async def on_ready():
+    print("Bot is now online")
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+client.run(TOKEN)
